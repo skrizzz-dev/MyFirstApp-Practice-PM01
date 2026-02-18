@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +44,23 @@ public class MainActivity extends AppCompatActivity {
                 screens
         );
         lvScreens.setAdapter(adapter);
+
+        Button buttonStart = findViewById(R.id.button_start);
+        Button buttonStop = findViewById(R.id.button_stop);
+
+        buttonStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Приветствие!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        buttonStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonStop.setVisibility(View.GONE);
+            }
+        });
 
         lvScreens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

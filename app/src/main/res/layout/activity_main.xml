@@ -24,4 +24,18 @@
         android:dividerHeight="1dp"
         android:minHeight="200dp" />
 
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Старт"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/button_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Остановить"
+        android:layout_marginTop="16dp"/>
+
 </LinearLayout>
