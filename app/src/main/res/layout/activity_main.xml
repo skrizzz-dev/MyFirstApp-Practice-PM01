@@ -45,6 +45,26 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
 
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="🔍 Поиск по названию задач"
+            android:inputType="text"
+            android:background="@drawable/search_background"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔍 Найти задачи"
+            android:backgroundTint="#2196F3"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -65,6 +85,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
+
+
         </LinearLayout>
 
         <ListView
@@ -78,6 +100,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#FF5722"/>
+
+
 
     </LinearLayout>
 </ScrollView>
