@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         String[] screens = {
                 "Открыть профиль",
                 "Открыть экран с расчётом",
-                "Открыть экран настроек"
+                "Открыть экран настроек",
+                "Каталог картинок"
         };
         ArrayAdapter<String> navAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, screens);
@@ -50,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if (position == 2) {
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 }
+                else if (position == 3) {
+                    startActivity(new Intent(MainActivity.this, GalleryActivity.class));
+                }
+
             }
         });
 
