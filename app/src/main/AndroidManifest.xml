@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstApp">
         <activity
+            android:name=".MediaActivity"
+            android:exported="false" />
+        <activity
             android:name=".GalleryActivity"
             android:exported="false" />
         <activity
