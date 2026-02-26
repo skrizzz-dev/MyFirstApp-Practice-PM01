@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -13,15 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class HomeFragment extends Fragment {
 
     private DatabaseHelper dbHelper;
     private ListView listViewTasks;
-    private ArrayAdapter<String> tasksAdapter;
+    private CustomArrayAdapter tasksAdapter;
     private List<Task> tasks = new ArrayList<>();
 
     private EditText etTitle;
@@ -78,18 +80,18 @@ public class HomeFragment extends Fragment {
         }
     }
 
+
     private void refreshTasksList() {
         tasks.clear();
         tasks.addAll(dbHelper.getAllTasks());
-
         List<String> displayList = new ArrayList<>();
         for (Task task : tasks) {
             displayList.add("#" + task.getId() + " " + task.getTitle());
         }
-
-        tasksAdapter = new ArrayAdapter<>(requireContext(),
-                android.R.layout.simple_list_item_1,
-                displayList);
+        SharedPreferences prefs = requireContext().getSharedPreferences("settings",
+                Context.MODE_PRIVATE);
+        int fontSize = prefs.getInt("font_size", 16);
+        tasksAdapter = new CustomArrayAdapter(requireContext(), tasks, fontSize);
         listViewTasks.setAdapter(tasksAdapter);
         tasksAdapter.notifyDataSetChanged();
     }
