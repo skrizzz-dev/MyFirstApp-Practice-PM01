@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstApp">
         <activity
-            android:name=".MediaActivity"
+            android:name=".MediaFragment"
             android:exported="false" />
         <activity
             android:name=".GalleryActivity"

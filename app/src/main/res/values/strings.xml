@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyFirstApp</string>
+    <string name="bnm_main">Главная</string>
+    <string name="bnm_gallery">Галерея</string>
+    <string name="bnm_media">Медиа</string>
+    <string name="bnm_settings">Настройки</string>
 </resources>

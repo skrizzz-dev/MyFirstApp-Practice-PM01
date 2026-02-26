@@ -1,38 +1,42 @@
 package com.example.myfirstapp;
 
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;  // ИЗМЕНЕНО
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GalleryActivity extends AppCompatActivity {
+public class GalleryFragment extends Fragment {  // ИЗМЕНЕНО: теперь extends Fragment
 
     private RecyclerView rvGallery;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gallery);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {  // ИЗМЕНЕНО: onCreateView вместо onCreate
+        View view = inflater.inflate(R.layout.activity_gallery, container, false);  // ИЗМЕНЕНО
 
-        rvGallery = findViewById(R.id.rvGallery);
-        rvGallery.setLayoutManager(new LinearLayoutManager(this));
+        rvGallery = view.findViewById(R.id.rvGallery);  // ИЗМЕНЕНО: view.findViewById
+        rvGallery.setLayoutManager(new LinearLayoutManager(getContext()));  // ИЗМЕНЕНО: getContext()
 
         List<GalleryItem> items = loadItemsFromAssets();
-        GalleryAdapter adapter = new GalleryAdapter(this, items);
+        GalleryAdapter adapter = new GalleryAdapter(getContext(), items);  // ИЗМЕНЕНО: getContext()
         rvGallery.setAdapter(adapter);
+
+        return view;  // ДОБАВЛЕНО
     }
 
     private List<GalleryItem> loadItemsFromAssets() {
         List<GalleryItem> items = new ArrayList<>();
         try {
-            InputStream is = getAssets().open("gallery.txt");
+            // ИЗМЕНЕНО: getActivity().getAssets() вместо getAssets()
+            InputStream is = getActivity().getAssets().open("gallery.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
             while ((line = reader.readLine()) != null) {
